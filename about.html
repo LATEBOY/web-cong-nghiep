@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu - Công Ty Giải Pháp Công Nghiệp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #28a745;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 86, 179, 0.9), rgba(0, 86, 179, 0.8)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 60px;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .page-header p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        /* About Sections */
+        .about-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Company Overview */
+        .company-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        
+        .overview-text h3 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .overview-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .overview-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .overview-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .overview-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Stats Counter */
+        .stats-counter {
+            background: linear-gradient(135deg, var(--primary), #004494);
+            color: white;
+            padding: 80px 0;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Mission Vision Values */
+        .mvv-section {
+            margin: 80px 0;
+        }
+        
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .mvv-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .mvv-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .mvv-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .mvv-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Timeline */
+        .timeline-section {
+            margin: 80px 0;
+            position: relative;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            width: 45%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -60px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -60px;
+        }
+        
+        .timeline-year {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        /* Team Section */
+        .team-section {
+            margin: 80px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-image {
+            height: 250px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: var(--primary);
+        }
+        
+        .team-info {
+            padding: 25px;
+        }
+        
+        .team-name {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .team-position {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .team-contact {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .team-contact a {
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+        
+        .team-contact a:hover {
+            color: var(--primary);
+        }
+        
+        /* Certifications */
+        .cert-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            margin: 80px 0;
+            border-radius: 10px;
+        }
+        
+        .cert-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .cert-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .cert-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Industries Served */
+        .industries-section {
+            margin: 80px 0;
+        }
+        
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .industry-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .industry-card:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .industry-card:hover .industry-icon {
+            color: white;
+        }
+        
+        .industry-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), #004494);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin: 80px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #218838;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .company-overview {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .timeline-item {
+                width: 90%;
+                left: 5% !important;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .page-header p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .mvv-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadein {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-industry"></i>
+                <span>Công Ty Công Nghiệp</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="about.html" class="active">Giới Thiệu</a></li>
+                    <li><a href="services.html">Dịch Vụ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="partners.html">Đối Tác</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>VỀ CHÚNG TÔI</h1>
+            <p>Hơn 10 năm đồng hành cùng sự phát triển công nghiệp Việt Nam</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <!-- Company Overview -->
+            <div class="company-overview animate-fadein">
+                <div class="overview-text">
+                    <h3>CÔNG TY TNHH GIẢI PHÁP KỸ THUẬT VÀ CÔNG NGHỆ THẠNH HƯNG</h3>
+                    <p>Được thành lập năm 2014, chúng tôi tự hào là đơn vị tiên phong trong lĩnh vực tư vấn và cung cấp giải pháp kỹ thuật công nghiệp toàn diện tại Việt Nam.</p>
+                    <p>Với đội ngũ kỹ sư giàu kinh nghiệm và hệ thống đối tác toàn cầu, chúng tôi cam kết mang đến những sản phẩm chất lượng cao và dịch vụ chuyên nghiệp nhất.</p>
+                    <p>Chúng tôi không chỉ cung cấp thiết bị mà còn đồng hành cùng khách hàng trong suốt quá trình vận hành, bảo trì và phát triển hệ thống.</p>
+                </div>
+                <div class="overview-image">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Công ty công nghiệp">
+                </div>
+            </div>
+
+            <!-- Stats Counter -->
+            <div class="stats-counter">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="10">0</div>
+                            <div class="stat-label">Năm Kinh Nghiệm</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="500">0</div>
+                            <div class="stat-label">Dự Án Hoàn Thành</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="50">0</div>
+                            <div class="stat-label">Đối Tác Doanh Nghiệp</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="100">0</div>
+                            <div class="stat-label">Nhân Sự Chuyên Môn</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission Vision Values -->
+            <div class="mvv-section">
+                <div class="section-title">
+                    <h2>Sứ Mệnh - Tầm Nhìn - Giá Trị</h2>
+                    <p>Những điều tạo nên sự khác biệt của chúng tôi</p>
+                </div>
+                
+                <div class="mvv-grid">
+                    <div class="mvv-card animate-fadein">
+                        <div class="mvv-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>SỨ MỆNH</h3>
+                        <p>Cung cấp giải pháp công nghiệp tối ưu, nâng cao hiệu quả sản xuất và bảo vệ môi trường cho khách hàng.</p>
+                    </div>
+                    
+                    <div class="mvv-card animate-fadein">
+                        <div class="mvv-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>TẦM NHÌN</h3>
+                        <p>Trở thành đối tác tin cậy hàng đầu về giải pháp kỹ thuật công nghiệp tại Việt Nam và khu vực Đông Nam Á.</p>
+                    </div>
+                    
+                    <div class="mvv-card animate-fadein">
+                        <div class="mvv-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>GIÁ TRỊ CỐT LÕI</h3>
+                        <p>Chuyên nghiệp - Tin cậy - Chất lượng - Đổi mới - Bền vững.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-section">
+                <div class="section-title">
+                    <h2>HÀNH TRÌNH PHÁT TRIỂN</h2>
+                    <p>Những mốc son quan trọng trong hành trình 10 năm</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content animate-fadein">
+                            <div class="timeline-year">2014</div>
+                            <h3>Thành lập công ty</h3>
+                            <p>Thành lập với tên gọi Công ty TNHH Giải Pháp Kỹ Thuật và Công Nghệ Thạnh Hưng, bắt đầu cung cấp dịch vụ tư vấn kỹ thuật.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content animate-fadein">
+                            <div class="timeline-year">2016</div>
+                            <h3>Trở thành đại lý chính thức của Sydex</h3>
+                            <p>Ký kết hợp tác độc quyền với Sydex (Đức) để phân phối máy bơm trục vít công nghiệp tại Việt Nam.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content animate-fadein">
+                            <div class="timeline-year">2018</div>
+                            <h3>Mở rộng sang hệ thống khí nén</h3>
+                            <p>Bổ sung dòng sản phẩm máy nén khí và hệ thống xử lý khí nén, hợp tác với AirTech (Nhật Bản).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content animate-fadein">
+                            <div class="timeline-year">2020</div>
+                            <h3>Thành lập trung tâm dịch vụ kỹ thuật</h3>
+                            <p>Mở trung tâm dịch vụ kỹ thuật 24/7 tại Hồ Chí Minh và Hà Nội, nâng cao chất lượng hỗ trợ khách hàng.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content animate-fadein">
+                            <div class="timeline-year">2023</div>
+                            <h3>Phát triển giải pháp công nghiệp 4.0</h3>
+                            <p>Triển khai các giải pháp IoT và tự động hóa cho hệ thống công nghiệp, hướng đến chuyển đổi số.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="team-section">
+                <div class="section-title">
+                    <h2>ĐỘI NGŨ LÃNH ĐẠO</h2>
+                    <p>Những người dẫn dắt và tạo nên thành công của chúng tôi</p>
+                </div>
+                
+                <div class="team-grid">
+                    <div class="team-card animate-fadein">
+                        <div class="team-image">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Ông Nguyễn Văn A</h3>
+                            <p class="team-position">Tổng Giám Đốc</p>
+                            <p>20 năm kinh nghiệm trong lĩnh vực công nghiệp, nguyên Giám đốc kỹ thuật tại tập đoàn đa quốc gia.</p>
+                            <div class="team-contact">
+                                <a href="mailto:nguyenvana@company.com"><i class="fas fa-envelope"></i></a>
+                                <a href="tel:0901234567"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card animate-fadein">
+                        <div class="team-image">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Bà Trần Thị B</h3>
+                            <p class="team-position">Giám Đốc Kinh Doanh</p>
+                            <p>15 năm kinh nghiệm phát triển thị trường, chuyên gia về giải pháp công nghiệp cho doanh nghiệp vừa và lớn.</p>
+                            <div class="team-contact">
+                                <a href="mailto:tranthib@company.com"><i class="fas fa-envelope"></i></a>
+                                <a href="tel:0902345678"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card animate-fadein">
+                        <div class="team-image">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Ông Lê Văn C</h3>
+                            <p class="team-position">Giám Đốc Kỹ Thuật</p>
+                            <p>Thạc sĩ Cơ khí, 18 năm kinh nghiệm thiết kế và triển khai hệ thống công nghiệp tại Việt Nam và quốc tế.</p>
+                            <div class="team-contact">
+                                <a href="mailto:levanc@company.com"><i class="fas fa-envelope"></i></a>
+                                <a href="tel:0903456789"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="cert-section animate-fadein">
+                <div class="section-title">
+                    <h2>CHỨNG NHẬN & GIẢI THƯỞNG</h2>
+                    <p>Những minh chứng cho chất lượng và uy tín của chúng tôi</p>
+                </div>
+                
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>ISO 9001:2015</h3>
+                        <p>Chứng nhận hệ thống quản lý chất lượng</p>
+                    </div>
+                    
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h3>Doanh nghiệp xuất sắc</h3>
+                        <p>Top 10 doanh nghiệp công nghiệp 2022</p>
+                    </div>
+                    
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Đối tác Vàng</h3>
+                        <p>Sydex 5 năm liên tiếp</p>
+                    </div>
+                    
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Giải thưởng Đổi mới</h3>
+                        <p>Công nghệ công nghiệp 2023</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industries Served -->
+            <div class="industries-section">
+                <div class="section-title">
+                    <h2>LĨNH VỰC PHỤC VỤ</h2>
+                    <p>Chúng tôi phục vụ đa dạng các ngành công nghiệp</p>
+                </div>
+                
+                <div class="industries-grid">
+                    <div class="industry-card animate-fadein">
+                        <div class="industry-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3>Xử lý nước & Môi trường</h3>
+                        <p>Nhà máy xử lý nước thải, cấp thoát nước</p>
+                    </div>
+                    
+                    <div class="industry-card animate-fadein">
+                        <div class="industry-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Hóa chất & Dược phẩm</h3>
+                        <p>Nhà máy hóa chất, dược phẩm, mỹ phẩm</p>
+                    </div>
+                    
+                    <div class="industry-card animate-fadein">
+                        <div class="industry-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Thực phẩm & Đồ uống</h3>
+                        <p>Nhà máy chế biến thực phẩm, nước giải khát</p>
+                    </div>
+                    
+                    <div class="industry-card animate-fadein">
+                        <div class="industry-icon">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <h3>Dầu khí & Năng lượng</h3>
+                        <p>Nhà máy lọc dầu, nhiệt điện, năng lượng tái tạo</p>
+                    </div>
+                    
+                    <div class="industry-card animate-fadein">
+                        <div class="industry-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h3>Xây dựng & Khai khoáng</h3>
+                        <p>Công trường xây dựng, khai thác khoáng sản</p>
+                    </div>
+                    
+                    <div class="industry-card animate-fadein">
+                        <div class="industry-icon">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <h3>Hàng hải & Vận tải</h3>
+                        <p>Cảng biển, đóng tàu, logistic</p>
+                    </div>
+                    
+                    <div class="industry-card animate-fadein">
+                        <div class="industry-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Nông nghiệp & Thủy sản</h3>
+                        <p>Trang trại, nhà máy chế biến nông thủy sản</p>
+                    </div>
+                    
+                    <div class="industry-card animate-fadein">
+                        <div class="industry-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Sản xuất công nghiệp</h3>
+                        <p>Khu công nghiệp, nhà máy sản xuất</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section animate-fadein">
+                <div class="container">
+                    <h2>SẴN SÀNG HỢP TÁC CÙNG BẠN</h2>
+                    <p>Hãy để chúng tôi trở thành đối tác tin cậy trong hành trình phát triển công nghiệp của bạn</p>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                        <a href="contact.html" class="btn">
+                            <i class="fas fa-handshake"></i> Liên hệ hợp tác
+                        </a>
+                        <a href="products.html" class="btn btn-secondary">
+                            <i class="fas fa-box-open"></i> Xem sản phẩm
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-industry"></i> Công Ty Công Nghiệp
+                    </div>
+                    <p>Chuyên tư vấn giải pháp kỹ thuật về hệ thống máy bơm, hệ thống khí nén, máy khuấy chìm, phụ kiện công nghiệp.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="about.html">Giới Thiệu</a></li>
+                        <li><a href="services.html">Dịch Vụ</a></li>
+                        <li><a href="products.html">Sản Phẩm</a></li>
+                        <li><a href="contact.html">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Thông Tin Liên Hệ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Đường Công Nghiệp, Quận 1, TP.HCM</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:02812345678" style="color: white; text-decoration: none;">(028) 1234 5678</a></p>
+                    <p><i class="fas fa-mobile-alt"></i> <a href="tel:0901234567" style="color: white; text-decoration: none;">0901 234 567</a></p>
+                    <p><i class="fas fa-envelope"></i> info@congtycongnghiep.com</p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 8:00 - 17:00</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2014-2023 Công Ty TNHH Giải Pháp Kỹ Thuật và Công Nghệ Thạnh Hưng. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+        const backToTop = document.getElementById('backToTop');
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const animatedElements = document.querySelectorAll('.animate-fadein');
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainMenu.classList.remove('active');
+            });
+        });
+
+        // Back to Top Button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+            
+            // Animate elements on scroll
+            animateOnScroll();
+        });
+
+        // Smooth scroll for back to top
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate counter numbers
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds
+            const step = target / (duration / 16); // 60fps
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+            
+            // Animate stats counter when in view
+            statNumbers.forEach(stat => {
+                const statTop = stat.parentElement.getBoundingClientRect().top;
+                if (statTop < window.innerHeight - 100 && !stat.classList.contains('animated')) {
+                    stat.classList.add('animated');
+                    animateCounter(stat);
+                }
+            });
+        }
+
+        // Set initial state for animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Initialize animations
+            animateOnScroll();
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add current year to copyright
+            const copyright = document.querySelector('.copyright p');
+            if (copyright) {
+                const currentYear = new Date().getFullYear();
+                copyright.innerHTML = copyright.innerHTML.replace('2023', currentYear);
+            }
+        });
+
+        // Parallax effect for page header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.page-header');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

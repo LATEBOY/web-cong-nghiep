@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Vụ - Công Ty Giải Pháp Công Nghiệp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #28a745;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 86, 179, 0.9), rgba(0, 86, 179, 0.8)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 60px;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 60px 0 100px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Service Tabs */
+        .service-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .tab-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Service Details */
+        .service-details {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .service-details.active {
+            display: block;
+        }
+        
+        .service-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .service-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .service-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .service-info h3 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-features {
+            margin: 30px 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .feature-list i {
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        
+        /* Process Steps */
+        .process-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            margin: 80px 0;
+            border-radius: 10px;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .process-step {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .step-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        /* Pricing Table */
+        .pricing-section {
+            margin: 80px 0;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .pricing-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .price-tag {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        /* Service Packages */
+        .packages-section {
+            margin: 80px 0;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .package-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .package-header {
+            background: linear-gradient(135deg, var(--primary), #004494);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .package-name {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .package-price {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .package-price .period {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .package-features {
+            padding: 30px;
+        }
+        
+        .package-features ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .package-features i {
+            color: var(--secondary);
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), #004494);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin: 80px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #218838;
+            color: white;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 80px 0;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+        
+        .faq-item {
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .service-header {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .packages-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .page-header p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .service-tabs {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+            }
+            
+            .tab-btn {
+                white-space: nowrap;
+            }
+            
+            .pricing-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadein {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-industry"></i>
+                <span>Công Ty Công Nghiệp</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="about.html">Giới Thiệu</a></li>
+                    <li><a href="services.html" class="active">Dịch Vụ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="partners.html">Đối Tác</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>DỊCH VỤ CHUYÊN NGHIỆP</h1>
+            <p>Cung cấp giải pháp toàn diện từ tư vấn, thiết kế đến bảo trì hệ thống công nghiệp</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>DỊCH VỤ CỦA CHÚNG TÔI</h2>
+                <p>Chúng tôi cung cấp đầy đủ các dịch vụ hỗ trợ cho hệ thống công nghiệp của bạn</p>
+            </div>
+
+            <!-- Service Tabs -->
+            <div class="service-tabs">
+                <button class="tab-btn active" data-tab="consulting">Tư Vấn Giải Pháp</button>
+                <button class="tab-btn" data-tab="design">Thiết Kế Hệ Thống</button>
+                <button class="tab-btn" data-tab="installation">Lắp Đặt & Vận Hành</button>
+                <button class="tab-btn" data-tab="maintenance">Bảo Trì & Sửa Chữa</button>
+                <button class="tab-btn" data-tab="training">Đào Tạo & Chuyển Giao</button>
+            </div>
+
+            <!-- Service 1: Consulting -->
+            <div class="service-details active" id="consulting">
+                <div class="service-header animate-fadein">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Tư vấn giải pháp">
+                    </div>
+                    <div class="service-info">
+                        <h3>Tư Vấn Giải Pháp Công Nghiệp</h3>
+                        <p>Chúng tôi cung cấp dịch vụ tư vấn chuyên sâu để đánh giá nhu cầu và đề xuất giải pháp tối ưu cho hệ thống công nghiệp của bạn.</p>
+                        
+                        <div class="service-features">
+                            <h4>Đặc điểm nổi bật:</h4>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Phân tích hiện trạng hệ thống</li>
+                                <li><i class="fas fa-check-circle"></i> Đề xuất giải pháp tối ưu về chi phí và hiệu quả</li>
+                                <li><i class="fas fa-check-circle"></i> Lập báo cáo kỹ thuật chi tiết</li>
+                                <li><i class="fas fa-check-circle"></i> Tư vấn thiết bị phù hợp với ngân sách</li>
+                                <li><i class="fas fa-check-circle"></i> Dự toán chi phí đầu tư ban đầu và vận hành</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <a href="contact.html" class="btn">
+                                <i class="fas fa-calendar-check"></i> Đặt lịch tư vấn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pricing for Consulting -->
+                <div class="pricing-section">
+                    <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);">Bảng giá dịch vụ tư vấn</h3>
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Gói dịch vụ</th>
+                                <th>Phạm vi</th>
+                                <th>Thời gian</th>
+                                <th>Chi phí</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tư vấn cơ bản</td>
+                                <td>Đánh giá sơ bộ & đề xuất giải pháp</td>
+                                <td>3-5 ngày</td>
+                                <td class="price-tag">Miễn phí</td>
+                            </tr>
+                            <tr>
+                                <td>Tư vấn chuyên sâu</td>
+                                <td>Phân tích chi tiết & báo cáo kỹ thuật</td>
+                                <td>7-10 ngày</td>
+                                <td class="price-tag">10.000.000 VND</td>
+                            </tr>
+                            <tr>
+                                <td>Tư vấn toàn diện</td>
+                                <td>Bao gồm khảo sát, thiết kế & dự toán</td>
+                                <td>15-20 ngày</td>
+                                <td class="price-tag">25.000.000 VND</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Service 2: Design -->
+            <div class="service-details" id="design">
+                <div class="service-header animate-fadein">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Thiết kế hệ thống">
+                    </div>
+                    <div class="service-info">
+                        <h3>Thiết Kế Hệ Thống Công Nghiệp</h3>
+                        <p>Đội ngũ kỹ sư giàu kinh nghiệm của chúng tôi thiết kế hệ thống công nghiệp tối ưu, đảm bảo hiệu quả và an toàn.</p>
+                        
+                        <div class="service-features">
+                            <h4>Dịch vụ thiết kế:</h4>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Thiết kế hệ thống máy bơm và đường ống</li>
+                                <li><i class="fas fa-check-circle"></i> Thiết kế hệ thống khí nén công nghiệp</li>
+                                <li><i class="fas fa-check-circle"></i> Thiết kế hệ thống xử lý nước thải</li>
+                                <li><i class="fas fa-check-circle"></i> Thiết kế hệ thống định lượng hóa chất</li>
+                                <li><i class="fas fa-check-circle"></i> Tạo bản vẽ kỹ thuật 2D/3D chi tiết</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <a href="contact.html" class="btn">
+                                <i class="fas fa-pencil-ruler"></i> Yêu cầu thiết kế
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3: Installation -->
+            <div class="service-details" id="installation">
+                <div class="service-header animate-fadein">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Lắp đặt vận hành">
+                    </div>
+                    <div class="service-info">
+                        <h3>Lắp Đặt & Vận Hành Hệ Thống</h3>
+                        <p>Chúng tôi thực hiện lắp đặt hệ thống chuyên nghiệp, đảm bảo chất lượng và tiến độ theo yêu cầu của khách hàng.</p>
+                        
+                        <div class="service-features">
+                            <h4>Quy trình lắp đặt:</h4>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Chuẩn bị mặt bằng và thiết bị</li>
+                                <li><i class="fas fa-check-circle"></i> Lắp đặt thiết bị theo bản vẽ thiết kế</li>
+                                <li><i class="fas fa-check-circle"></i> Kết nối hệ thống đường ống, điện, điều khiển</li>
+                                <li><i class="fas fa-check-circle"></i> Chạy thử và hiệu chỉnh hệ thống</li>
+                                <li><i class="fas fa-check-circle"></i> Bàn giao và hướng dẫn vận hành</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Process Steps -->
+                <div class="process-section">
+                    <div class="container">
+                        <div class="section-title">
+                            <h3>QUY TRÌNH LẮP ĐẶT</h3>
+                            <p>6 bước tiêu chuẩn để đảm bảo chất lượng</p>
+                        </div>
+                        
+                        <div class="process-steps">
+                            <div class="process-step animate-fadein">
+                                <div class="step-number">1</div>
+                                <div class="step-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <h4>Khảo sát hiện trường</h4>
+                                <p>Đánh giá điều kiện lắp đặt thực tế</p>
+                            </div>
+                            
+                            <div class="process-step animate-fadein">
+                                <div class="step-number">2</div>
+                                <div class="step-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h4>Chuẩn bị thiết bị</h4>
+                                <p>Kiểm tra và chuẩn bị thiết bị lắp đặt</p>
+                            </div>
+                            
+                            <div class="process-step animate-fadein">
+                                <div class="step-number">3</div>
+                                <div class="step-icon">
+                                    <i class="fas fa-hammer"></i>
+                                </div>
+                                <h4>Lắp đặt thiết bị</h4>
+                                <p>Lắp đặt theo đúng bản vẽ thiết kế</p>
+                            </div>
+                            
+                            <div class="process-step animate-fadein">
+                                <div class="step-number">4</div>
+                                <div class="step-icon">
+                                    <i class="fas fa-plug"></i>
+                                </div>
+                                <h4>Kết nối hệ thống</h4>
+                                <p>Kết nối điện, đường ống, điều khiển</p>
+                            </div>
+                            
+                            <div class="process-step animate-fadein">
+                                <div class="step-number">5</div>
+                                <div class="step-icon">
+                                    <i class="fas fa-play-circle"></i>
+                                </div>
+                                <h4>Chạy thử nghiệm</h4>
+                                <p>Kiểm tra và hiệu chỉnh hệ thống</p>
+                            </div>
+                            
+                            <div class="process-step animate-fadein">
+                                <div class="step-number">6</div>
+                                <div class="step-icon">
+                                    <i class="fas fa-clipboard-list"></i>
+                                </div>
+                                <h4>Bàn giao hệ thống</h4>
+                                <p>Bàn giao và hướng dẫn vận hành</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 4: Maintenance -->
+            <div class="service-details" id="maintenance">
+                <div class="service-header animate-fadein">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Bảo trì sửa chữa">
+                    </div>
+                    <div class="service-info">
+                        <h3>Bảo Trì & Sửa Chữa Hệ Thống</h3>
+                        <p>Dịch vụ bảo trì định kỳ và sửa chữa khẩn cấp 24/7, đảm bảo hệ thống hoạt động ổn định và liên tục.</p>
+                        
+                        <div class="service-features">
+                            <h4>Dịch vụ bảo trì:</h4>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Bảo trì định kỳ hệ thống</li>
+                                <li><i class="fas fa-check-circle"></i> Sửa chữa khẩn cấp 24/7</li>
+                                <li><i class="fas fa-check-circle"></i> Thay thế phụ kiện chính hãng</li>
+                                <li><i class="fas fa-check-circle"></i> Nâng cấp và cải tiến hệ thống</li>
+                                <li><i class="fas fa-check-circle"></i> Bảo dưỡng thiết bị theo khuyến cáo NSX</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background-color: #fff3cd; padding: 20px; border-radius: 8px; margin-top: 30px;">
+                            <h4 style="color: #856404; margin-bottom: 10px;">
+                                <i class="fas fa-exclamation-triangle"></i> Hotline sửa chữa khẩn cấp
+                            </h4>
+                            <a href="tel:0909888777" style="font-size: 24px; color: var(--primary); font-weight: bold; text-decoration: none;">
+                                <i class="fas fa-phone-volume"></i> 0909 888 777
+                            </a>
+                            <p style="margin-top: 10px; color: #666;">Hỗ trợ 24/7, có mặt trong vòng 2 giờ tại TP.HCM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Packages -->
+                <div class="packages-section">
+                    <div class="section-title">
+                        <h3>GÓI DỊCH VỤ BẢO TRÌ</h3>
+                        <p>Lựa chọn gói dịch vụ phù hợp với nhu cầu của bạn</p>
+                    </div>
+                    
+                    <div class="packages-grid">
+                        <div class="package-card animate-fadein">
+                            <div class="package-header">
+                                <h3 class="package-name">GÓI CƠ BẢN</h3>
+                                <div class="package-price">
+                                    5.000.000 <span class="period">VND/tháng</span>
+                                </div>
+                            </div>
+                            <div class="package-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Kiểm tra định kỳ 1 lần/tháng</li>
+                                    <li><i class="fas fa-check"></i> Báo cáo tình trạng hệ thống</li>
+                                    <li><i class="fas fa-check"></i> Hỗ trợ kỹ thuật qua điện thoại</li>
+                                    <li><i class="fas fa-times"></i> <span style="opacity: 0.6;">Sửa chữa khẩn cấp</span></li>
+                                    <li><i class="fas fa-times"></i> <span style="opacity: 0.6;">Thay thế phụ kiện</span></li>
+                                </ul>
+                                <a href="contact.html" class="btn" style="width: 100%; text-align: center;">
+                                    Đăng ký ngay
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="package-card animate-fadein">
+                            <div class="package-badge">PHỔ BIẾN</div>
+                            <div class="package-header">
+                                <h3 class="package-name">GÓI TIÊU CHUẨN</h3>
+                                <div class="package-price">
+                                    12.000.000 <span class="period">VND/tháng</span>
+                                </div>
+                            </div>
+                            <div class="package-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Kiểm tra định kỳ 2 lần/tháng</li>
+                                    <li><i class="fas fa-check"></i> Bảo dưỡng thiết bị định kỳ</li>
+                                    <li><i class="fas fa-check"></i> Sửa chữa khẩn trong 24h</li>
+                                    <li><i class="fas fa-check"></i> Giảm 10% phụ kiện thay thế</li>
+                                    <li><i class="fas fa-times"></i> <span style="opacity: 0.6;">Bảo trì 24/7</span></li>
+                                </ul>
+                                <a href="contact.html" class="btn btn-secondary" style="width: 100%; text-align: center;">
+                                    Đăng ký ngay
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="package-card animate-fadein">
+                            <div class="package-header">
+                                <h3 class="package-name">GÓI CAO CẤP</h3>
+                                <div class="package-price">
+                                    25.000.000 <span class="period">VND/tháng</span>
+                                </div>
+                            </div>
+                            <div class="package-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Bảo trì 24/7</li>
+                                    <li><i class="fas fa-check"></i> Có mặt trong 2 giờ khi khẩn cấp</li>
+                                    <li><i class="fas fa-check"></i> Thay thế phụ kiện miễn phí</li>
+                                    <li><i class="fas fa-check"></i> Giám sát hệ thống từ xa</li>
+                                    <li><i class="fas fa-check"></i> Bảo hành mở rộng thiết bị</li>
+                                </ul>
+                                <a href="contact.html" class="btn" style="width: 100%; text-align: center;">
+                                    Đăng ký ngay
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 5: Training -->
+            <div class="service-details" id="training">
+                <div class="service-header animate-fadein">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Đào tạo chuyển giao">
+                    </div>
+                    <div class="service-info">
+                        <h3>Đào Tạo & Chuyển Giao Công Nghệ</h3>
+                        <p>Chúng tôi đào tạo đội ngũ vận hành của khách hàng, đảm bảo khả năng vận hành và bảo trì hệ thống độc lập.</p>
+                        
+                        <div class="service-features">
+                            <h4>Chương trình đào tạo:</h4>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Đào tạo vận hành hệ thống</li>
+                                <li><i class="fas fa-check-circle"></i> Hướng dẫn bảo trì cơ bản</li>
+                                <li><i class="fas fa-check-circle"></i> Xử lý sự cố thông thường</li>
+                                <li><i class="fas fa-check-circle"></i> An toàn lao động trong vận hành</li>
+                                <li><i class="fas fa-check-circle"></i> Cấp chứng chỉ đào tạo</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <a href="contact.html" class="btn">
+                                <i class="fas fa-graduation-cap"></i> Đăng ký đào tạo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <div class="section-title">
+                    <h3>CÂU HỎI THƯỜNG GẶP</h3>
+                    <p>Giải đáp thắc mắc về dịch vụ của chúng tôi</p>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-item animate-fadein">
+                        <div class="faq-question">
+                            <span>Thời gian thực hiện một dự án tư vấn thiết kế là bao lâu?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Thời gian phụ thuộc vào quy mô và độ phức tạp của dự án. Thông thường từ 7-20 ngày làm việc. Chúng tôi sẽ cung cấp timeline chi tiết sau khi khảo sát hiện trạng.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item animate-fadein">
+                        <div class="faq-question">
+                            <span>Chi phí lắp đặt được tính như thế nào?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Chi phí lắp đặt được tính dựa trên: (1) Khối lượng công việc, (2) Độ phức tạp của hệ thống, (3) Thời gian thực hiện, (4) Vật tư phụ trợ. Chúng tôi sẽ báo giá chi tiết trước khi ký hợp đồng.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item animate-fadein">
+                        <div class="faq-question">
+                            <span>Chế độ bảo hành cho dịch vụ lắp đặt là bao lâu?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Chúng tôi bảo hành công trình lắp đặt 12 tháng kể từ ngày bàn giao. Trong thời gian bảo hành, mọi sự cố do lỗi lắp đặt sẽ được khắc phục miễn phí.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item animate-fadein">
+                        <div class="faq-question">
+                            <span>Có hỗ trợ khẩn cấp ngoài giờ hành chính không?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Có. Chúng tôi có hotline hỗ trợ khẩn cấp 24/7: 0909 888 777. Đội ngũ kỹ thuật sẽ có mặt trong vòng 2 giờ tại TP.HCM và 24 giờ tại các tỉnh thành khác.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section animate-fadein">
+                <div class="container">
+                    <h2>SẴN SÀNG HỢP TÁC CÙNG CHÚNG TÔI?</h2>
+                    <p>Liên hệ ngay để được tư vấn và báo giá chi tiết cho dịch vụ của bạn</p>
+                    
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                        <a href="contact.html" class="btn">
+                            <i class="fas fa-phone"></i> Liên hệ tư vấn
+                        </a>
+                        <a href="tel:0901234567" class="btn btn-secondary">
+                            <i class="fas fa-headset"></i> Gọi ngay: 0901 234 567
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-industry"></i> Công Ty Công Nghiệp
+                    </div>
+                    <p>Chuyên tư vấn giải pháp kỹ thuật về hệ thống máy bơm, hệ thống khí nén, máy khuấy chìm, phụ kiện công nghiệp.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="about.html">Giới Thiệu</a></li>
+                        <li><a href="services.html">Dịch Vụ</a></li>
+                        <li><a href="products.html">Sản Phẩm</a></li>
+                        <li><a href="contact.html">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Thông Tin Liên Hệ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Đường Công Nghiệp, Quận 1, TP.HCM</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:02812345678" style="color: white; text-decoration: none;">(028) 1234 5678</a></p>
+                    <p><i class="fas fa-mobile-alt"></i> <a href="tel:0901234567" style="color: white; text-decoration: none;">0901 234 567</a></p>
+                    <p><i class="fas fa-envelope"></i> services@congtycongnghiep.com</p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 8:00 - 17:00</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Công Ty Công Nghiệp. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+        const backToTop = document.getElementById('backToTop');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const serviceDetails = document.querySelectorAll('.service-details');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const animatedElements = document.querySelectorAll('.animate-fadein');
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainMenu.classList.remove('active');
+            });
+        });
+
+        // Service Tabs
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabBtns.forEach(b => b.classList.remove('active'));
+                serviceDetails.forEach(detail => detail.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                btn.classList.add('active');
+                
+                // Show corresponding service details
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Scroll to service details
+                document.getElementById(tabId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // FAQ Accordion
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Back to Top Button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+            
+            // Animate elements on scroll
+            animateOnScroll();
+        });
+
+        // Smooth scroll for back to top
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Set initial state for animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Initialize animations
+            animateOnScroll();
+            
+            // Add current year to copyright
+            const copyright = document.querySelector('.copyright p');
+            if (copyright) {
+                const currentYear = new Date().getFullYear();
+                copyright.innerHTML = copyright.innerHTML.replace('2023', currentYear);
+            }
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

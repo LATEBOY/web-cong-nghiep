@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm - Công Ty Giải Pháp Công Nghiệp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #28a745;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 86, 179, 0.9), rgba(0, 86, 179, 0.8)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 40px 0 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Filter Bar */
+        .filter-bar {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+            min-width: 180px;
+            cursor: pointer;
+        }
+        
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .search-box {
+            flex: 1;
+            max-width: 300px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 8px 15px 8px 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .filter-btn:hover {
+            background-color: #004494;
+        }
+        
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-icon {
+            font-size: 60px;
+            color: var(--primary);
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-category {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .product-title {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 10px;
+            min-height: 48px;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 60px;
+        }
+        
+        .product-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            color: var(--gray);
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .product-price .unit {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #218838;
+        }
+        
+        /* Category Navigation */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .category-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .category-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .page-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .page-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Product Comparison */
+        .comparison-section {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-radius: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                max-width: 100%;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .product-title {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 26px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadein {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalOpen 0.3s ease-out;
+        }
+        
+        @keyframes modalOpen {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+            z-index: 1;
+        }
+        
+        .modal-close:hover {
+            color: var(--dark);
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-industry"></i>
+                <span>Công Ty Công Nghiệp</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="about.html">Giới Thiệu</a></li>
+                    <li><a href="services.html">Dịch Vụ</a></li>
+                    <li><a href="products.html" class="active">Sản Phẩm</a></li>
+                    <li><a href="partners.html">Đối Tác</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>SẢN PHẨM CÔNG NGHIỆP</h1>
+            <p>Chúng tôi cung cấp đầy đủ các thiết bị công nghiệp chính hãng với chất lượng tốt nhất</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <!-- Category Navigation -->
+            <div class="category-nav">
+                <button class="category-btn active" data-category="all">Tất cả</button>
+                <button class="category-btn" data-category="pump">Máy Bơm</button>
+                <button class="category-btn" data-category="compressor">Máy Nén Khí</button>
+                <button class="category-btn" data-category="mixer">Máy Khuấy</button>
+                <button class="category-btn" data-category="valve">Van & Phụ Kiện</button>
+                <button class="category-btn" data-category="system">Hệ Thống</button>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label><i class="fas fa-filter"></i> Sắp xếp:</label>
+                    <select class="filter-select" id="sortSelect">
+                        <option value="default">Mặc định</option>
+                        <option value="price-asc">Giá thấp đến cao</option>
+                        <option value="price-desc">Giá cao đến thấp</option>
+                        <option value="name">Tên A-Z</option>
+                        <option value="newest">Mới nhất</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label><i class="fas fa-tag"></i> Thương hiệu:</label>
+                    <select class="filter-select" id="brandSelect">
+                        <option value="all">Tất cả</option>
+                        <option value="sydex">Sydex</option>
+                        <option value="flowmax">FlowMax</option>
+                        <option value="airtech">AirTech</option>
+                        <option value="mixtron">Mixtron</option>
+                        <option value="aquapro">AquaPro</option>
+                    </select>
+                </div>
+                
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                </div>
+                
+                <button class="filter-btn" id="applyFilter">
+                    <i class="fas fa-check"></i> Áp dụng
+                </button>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productGrid" class="product-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be generated by JavaScript -->
+            </div>
+
+            <!-- Quick Contact -->
+            <div class="comparison-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Cần Tư Vấn Sản Phẩm?</h2>
+                        <p>Đội ngũ kỹ thuật của chúng tôi sẵn sàng hỗ trợ 24/7</p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <div style="display: inline-block; background-color: white; padding: 30px; border-radius: 10px; box-shadow: var(--shadow);">
+                            <h3 style="color: var(--primary); margin-bottom: 15px;">Liên Hệ Ngay</h3>
+                            <p style="margin-bottom: 20px;">Để được báo giá và tư vấn chi tiết</p>
+                            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                                <a href="tel:0901234567" class="btn btn-secondary">
+                                    <i class="fas fa-phone"></i> 0876 115 426
+                                </a>
+                                <a href="contact.html" class="btn">
+                                    <i class="fas fa-envelope">vtphuc2503@gmail.com</i> Liên hệ qua email
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div id="modalContent">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-industry"></i> Công Ty Công Nghiệp
+                    </div>
+                    <p>Chuyên tư vấn giải pháp kỹ thuật về hệ thống máy bơm, hệ thống khí nén, máy khuấy chìm, phụ kiện công nghiệp.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="about.html">Giới Thiệu</a></li>
+                        <li><a href="services.html">Dịch Vụ</a></li>
+                        <li><a href="products.html">Sản Phẩm</a></li>
+                        <li><a href="contact.html">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Thông Tin Liên Hệ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Đường Công Nghiệp, Quận 1, TP.HCM</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:02812345678" style="color: white; text-decoration: none;">(028) 1234 5678</a></p>
+                    <p><i class="fas fa-mobile-alt"></i> <a href="tel:0901234567" style="color: white; text-decoration: none;">0901 234 567</a></p>
+                    <p><i class="fas fa-envelope"></i> sales@congtycongnghiep.com</p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 8:00 - 17:00</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Công Ty Công Nghiệp. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dữ liệu sản phẩm
+        const products = [
+            {
+                id: 1,
+                name: "Máy Bơm Trục Vít Sydex SX-150",
+                category: "pump",
+                brand: "sydex",
+                price: "45.000.000",
+                unit: "VND",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Bơm trục vít công nghiệp cho chất lỏng đặc, nhớt, hóa chất. Ứng dụng trong thực phẩm, hóa chất, dầu khí.",
+                specs: {
+                    capacity: "150 m³/h",
+                    power: "15 kW",
+                    pressure: "10 bar",
+                    material: "Thép không gỉ"
+                },
+                warranty: "24 tháng",
+                stock: "Còn hàng",
+                featured: true
+            },
+            {
+                id: 2,
+                name: "Máy Nén Khí AirTech AT-100",
+                category: "compressor",
+                brand: "airtech",
+                price: "85.000.000",
+                unit: "VND",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Máy nén khí trục vít công suất 100HP, tiết kiệm điện năng, vận hành êm ái.",
+                specs: {
+                    capacity: "100 m³/min",
+                    power: "75 kW",
+                    pressure: "8 bar",
+                    type: "Trục vít"
+                },
+                warranty: "24 tháng",
+                stock: "Còn hàng",
+                featured: true
+            },
+            {
+                id: 3,
+                name: "Bơm Bùn FlowMax FM-200",
+                category: "pump",
+                brand: "flowmax",
+                price: "32.000.000",
+                unit: "VND",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Bơm bùn cho khai khoáng, xử lý nước thải, công trình xây dựng. Chịu được bùn đặc sệt.",
+                specs: {
+                    capacity: "200 m³/h",
+                    power: "22 kW",
+                    pressure: "15 bar",
+                    material: "Gang cầu"
+                },
+                warranty: "18 tháng",
+                stock: "Còn hàng",
+                featured: false
+            },
+            {
+                id: 4,
+                name: "Máy Khuấy Chìm Mixtron MX-500",
+                category: "mixer",
+                brand: "mixtron",
+                price: "28.000.000",
+                unit: "VND",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Máy khuấy chìm cho bể xử lý nước thải, bể hóa chất, bể phản ứng.",
+                specs: {
+                    capacity: "500 L",
+                    power: "5.5 kW",
+                    speed: "1450 rpm",
+                    material: "PP/SS"
+                },
+                warranty: "12 tháng",
+                stock: "Còn hàng",
+                featured: false
+            },
+            {
+                id: 5,
+                name: "Bơm Hóa Chất AquaPro AP-80",
+                category: "pump",
+                brand: "aquapro",
+                price: "18.000.000",
+                unit: "VND",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Bơm chống ăn mòn cho acid, kiềm, hóa chất độc hại. Vật liệu PP, PVDF.",
+                specs: {
+                    capacity: "80 m³/h",
+                    power: "7.5 kW",
+                    pressure: "6 bar",
+                    material: "PP/PVDF"
+                },
+                warranty: "12 tháng",
+                stock: "Còn hàng",
+                featured: false
+            },
+            {
+                id: 6,
+                name: "Van Công Nghiệp Inox DN100",
+                category: "valve",
+                brand: "sydex",
+                price: "3.500.000",
+                unit: "VND",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Van bi inox 304, đường kính DN100, chịu áp lực cao, độ bền tốt.",
+                specs: {
+                    diameter: "DN100",
+                    pressure: "16 bar",
+                    material: "Inox 304",
+                    type: "Van bi"
+                },
+                warranty: "12 tháng",
+                stock: "Còn hàng",
+                featured: false
+            },
+            {
+                id: 7,
+                name: "Hệ Thống Định Lượng Mixtron DL-300",
+                category: "system",
+                brand: "mixtron",
+                price: "65.000.000",
+                unit: "VND",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Hệ thống châm hóa chất tự động, điều khiển PLC, chính xác cao.",
+                specs: {
+                    capacity: "300 L/h",
+                    pumps: "4 bơm",
+                    control: "PLC",
+                    accuracy: "±1%"
+                },
+                warranty: "24 tháng",
+                stock: "Còn hàng",
+                featured: true
+            },
+            {
+                id: 8,
+                name: "Máy Nén Khí Piston AirTech PT-50",
+                category: "compressor",
+                brand: "airtech",
+                price: "42.000.000",
+                unit: "VND",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Máy nén khí piston công suất 50HP, bền bỉ, dễ bảo trì.",
+                specs: {
+                    capacity: "50 m³/min",
+                    power: "37 kW",
+                    pressure: "10 bar",
+                    type: "Piston"
+                },
+                warranty: "18 tháng",
+                stock: "Còn hàng",
+                featured: false
+            }
+        ];
+
+        // Biến toàn cục
+        let currentPage = 1;
+        const productsPerPage = 6;
+        let filteredProducts = [...products];
+        let currentCategory = 'all';
+        let currentSort = 'default';
+        let currentBrand = 'all';
+        let currentSearch = '';
+
+        // DOM Elements
+        const productGrid = document.getElementById('productGrid');
+        const pagination = document.getElementById('pagination');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const sortSelect = document.getElementById('sortSelect');
+        const brandSelect = document.getElementById('brandSelect');
+        const searchInput = document.getElementById('searchInput');
+        const applyFilterBtn = document.getElementById('applyFilter');
+        const productModal = document.getElementById('productModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalContent = document.getElementById('modalContent');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+
+        // Hàm hiển thị sản phẩm
+        function displayProducts() {
+            // Tính toán sản phẩm cho trang hiện tại
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+            
+            // Xóa nội dung cũ
+            productGrid.innerHTML = '';
+            
+            // Hiển thị loading nếu không có sản phẩm
+            if (productsToShow.length === 0) {
+                productGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-box-open" style="font-size: 48px; color: #ccc; margin-bottom: 20px;"></i>
+                        <h3>Không tìm thấy sản phẩm</h3>
+                        <p>Vui lòng thử lại với bộ lọc khác</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Tạo HTML cho mỗi sản phẩm
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card animate-fadein';
+                
+                // Tạo badge nếu là sản phẩm nổi bật
+                const badge = product.featured ? '<div class="product-badge">Nổi bật</div>' : '';
+                
+                // Tạo HTML cho thông số kỹ thuật
+                let specsHTML = '';
+                for (const [key, value] of Object.entries(product.specs)) {
+                    let icon = 'fa-info-circle';
+                    let label = key;
+                    
+                    switch(key) {
+                        case 'capacity': icon = 'fa-tachometer-alt'; label = 'Công suất'; break;
+                        case 'power': icon = 'fa-bolt'; label = 'Điện năng'; break;
+                        case 'pressure': icon = 'fa-compress-arrows-alt'; label = 'Áp lực'; break;
+                        case 'material': icon = 'fa-cube'; label = 'Chất liệu'; break;
+                        case 'type': icon = 'fa-cog'; label = 'Loại'; break;
+                    }
+                    
+                    specsHTML += `
+                        <div class="spec-item">
+                            <i class="fas ${icon}"></i>
+                            <span>${label}: ${value}</span>
+                        </div>
+                    `;
+                }
+                
+                productCard.innerHTML = `
+                    ${badge}
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">${getCategoryName(product.category)} • ${getBrandName(product.brand)}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-specs">
+                            ${specsHTML}
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                ${product.price} <span class="unit">${product.unit}</span>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn btn-outline" onclick="viewProductDetail(${product.id})">
+                                    <i class="fas fa-eye"></i> Xem
+                                </button>
+                                <a href="contact.html" class="btn">
+                                    <i class="fas fa-phone"></i> Gọi
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                productGrid.appendChild(productCard);
+            });
+            
+            // Cập nhật pagination
+            updatePagination();
+        }
+
+        // Hàm lọc sản phẩm
+        function filterProducts() {
+            filteredProducts = products.filter(product => {
+                // Lọc theo category
+                if (currentCategory !== 'all' && product.category !== currentCategory) {
+                    return false;
+                }
+                
+                // Lọc theo brand
+                if (currentBrand !== 'all' && product.brand !== currentBrand) {
+                    return false;
+                }
+                
+                // Lọc theo search
+                if (currentSearch && !product.name.toLowerCase().includes(currentSearch.toLowerCase())) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            // Sắp xếp sản phẩm
+            sortProducts();
+            
+            // Reset về trang 1
+            currentPage = 1;
+            
+            // Hiển thị sản phẩm
+            displayProducts();
+        }
+
+        // Hàm sắp xếp sản phẩm
+        function sortProducts() {
+            switch(currentSort) {
+                case 'price-asc':
+                    filteredProducts.sort((a, b) => {
+                        const priceA = parseFloat(a.price.replace(/\./g, ''));
+                        const priceB = parseFloat(b.price.replace(/\./g, ''));
+                        return priceA - priceB;
+                    });
+                    break;
+                    
+                case 'price-desc':
+                    filteredProducts.sort((a, b) => {
+                        const priceA = parseFloat(a.price.replace(/\./g, ''));
+                        const priceB = parseFloat(b.price.replace(/\./g, ''));
+                        return priceB - priceA;
+                    });
+                    break;
+                    
+                case 'name':
+                    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                    
+                case 'newest':
+                    filteredProducts.sort((a, b) => b.id - a.id);
+                    break;
+                    
+                default:
+                    // Mặc định: featured trước, sau đó theo id
+                    filteredProducts.sort((a, b) => {
+                        if (a.featured && !b.featured) return -1;
+                        if (!a.featured && b.featured) return 1;
+                        return a.id - b.id;
+                    });
+            }
+        }
+
+        // Hàm cập nhật pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            
+            // Xóa pagination cũ
+            pagination.innerHTML = '';
+            
+            if (totalPages <= 1) return;
+            
+            // Nút Previous
+            const prevBtn = document.createElement('button');
+            prevBtn.className = `page-btn ${currentPage === 1 ? 'disabled' : ''}`;
+            prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            prevBtn.onclick = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayProducts();
+                    window.scrollTo({ top: productGrid.offsetTop - 100, behavior: 'smooth' });
+                }
+            };
+            pagination.appendChild(prevBtn);
+            
+            // Các nút số trang
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                pageBtn.textContent = i;
+                pageBtn.onclick = () => {
+                    currentPage = i;
+                    displayProducts();
+                    window.scrollTo({ top: productGrid.offsetTop - 100, behavior: 'smooth' });
+                };
+                pagination.appendChild(pageBtn);
+            }
+            
+            // Nút Next
+            const nextBtn = document.createElement('button');
+            nextBtn.className = `page-btn ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            nextBtn.onclick = () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayProducts();
+                    window.scrollTo({ top: productGrid.offsetTop - 100, behavior: 'smooth' });
+                }
+            };
+            pagination.appendChild(nextBtn);
+        }
+
+        // Hàm hiển thị chi tiết sản phẩm
+        function viewProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            // Tạo HTML chi tiết
+            let specsHTML = '';
+            for (const [key, value] of Object.entries(product.specs)) {
+                let icon = 'fa-info-circle';
+                let label = key;
+                
+                switch(key) {
+                    case 'capacity': icon = 'fa-tachometer-alt'; label = 'Công suất'; break;
+                    case 'power': icon = 'fa-bolt'; label = 'Điện năng'; break;
+                    case 'pressure': icon = 'fa-compress-arrows-alt'; label = 'Áp lực'; break;
+                    case 'material': icon = 'fa-cube'; label = 'Chất liệu'; break;
+                    case 'type': icon = 'fa-cog'; label = 'Loại'; break;
+                    case 'diameter': icon = 'fa-arrows-alt-h'; label = 'Đường kính'; break;
+                    case 'pumps': icon = 'fa-pump'; label = 'Số bơm'; break;
+                    case 'control': icon = 'fa-microchip'; label = 'Điều khiển'; break;
+                    case 'accuracy': icon = 'fa-crosshairs'; label = 'Độ chính xác'; break;
+                    case 'speed': icon = 'fa-tachometer-alt'; label = 'Tốc độ'; break;
+                }
+                
+                specsHTML += `
+                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <span style="color: #666;">
+                            <i class="fas ${icon}" style="margin-right: 8px;"></i>
+                            ${label}
+                        </span>
+                        <span style="font-weight: 600;">${value}</span>
+                    </div>
+                `;
+            }
+            
+            modalContent.innerHTML = `
+                <div style="padding: 30px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                        <div>
+                            <div style="height: 300px; background-color: #f8f9fa; border-radius: 10px; overflow: hidden; margin-bottom: 20px;">
+                                <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <div style="flex: 1; text-align: center; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                                    <div style="color: #666; font-size: 14px;">Bảo hành</div>
+                                    <div style="font-weight: bold; color: var(--primary);">${product.warranty}</div>
+                                </div>
+                                <div style="flex: 1; text-align: center; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                                    <div style="color: #666; font-size: 14px;">Tình trạng</div>
+                                    <div style="font-weight: bold; color: ${product.stock === 'Còn hàng' ? 'var(--secondary)' : '#f44336'};">${product.stock}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="margin-bottom: 20px;">
+                                <span style="background-color: #e9ecef; color: #666; padding: 5px 10px; border-radius: 3px; font-size: 14px;">
+                                    ${getCategoryName(product.category)}
+                                </span>
+                                <span style="background-color: #e3f2fd; color: var(--primary); padding: 5px 10px; border-radius: 3px; font-size: 14px; margin-left: 10px;">
+                                    ${getBrandName(product.brand)}
+                                </span>
+                            </div>
+                            
+                            <h2 style="color: var(--dark); margin-bottom: 15px;">${product.name}</h2>
+                            <p style="color: #666; margin-bottom: 20px; line-height: 1.6;">${product.description}</p>
+                            
+                            <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <div style="font-size: 14px; color: #666;">Giá bán</div>
+                                        <div style="font-size: 28px; color: var(--primary); font-weight: bold;">
+                                            ${product.price} <span style="font-size: 16px; color: #666;">${product.unit}</span>
+                                        </div>
+                                    </div>
+                                    ${product.featured ? '<div style="background-color: var(--secondary); color: white; padding: 5px 10px; border-radius: 3px;">Nổi bật</div>' : ''}
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 15px; margin-bottom: 30px;">
+                                <a href="contact.html" class="btn" style="flex: 1; text-align: center; padding: 12px;">
+                                    <i class="fas fa-phone"></i> Yêu cầu báo giá
+                                </a>
+                                <a href="tel:0901234567" class="btn btn-secondary" style="flex: 1; text-align: center; padding: 12px;">
+                                    <i class="fas fa-headset"></i> Gọi tư vấn
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: white; border-radius: 10px; padding: 25px; box-shadow: var(--shadow);">
+                        <h3 style="color: var(--primary); margin-bottom: 20px;">Thông số kỹ thuật</h3>
+                        <div style="max-width: 500px;">
+                            ${specsHTML}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Hiển thị modal
+            productModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Helper functions
+        function getCategoryName(category) {
+            const categories = {
+                'pump': 'Máy Bơm',
+                'compressor': 'Máy Nén Khí',
+                'mixer': 'Máy Khuấy',
+                'valve': 'Van & Phụ Kiện',
+                'system': 'Hệ Thống'
+            };
+            return categories[category] || category;
+        }
+
+        function getBrandName(brand) {
+            const brands = {
+                'sydex': 'Sydex',
+                'flowmax': 'FlowMax',
+                'airtech': 'AirTech',
+                'mixtron': 'Mixtron',
+                'aquapro': 'AquaPro'
+            };
+            return brands[brand] || brand;
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hiển thị sản phẩm ban đầu
+            displayProducts();
+            
+            // Category buttons
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.dataset.category;
+                    filterProducts();
+                });
+            });
+            
+            // Sort select
+            sortSelect.addEventListener('change', (e) => {
+                currentSort = e.target.value;
+                filterProducts();
+            });
+            
+            // Brand select
+            brandSelect.addEventListener('change', (e) => {
+                currentBrand = e.target.value;
+                filterProducts();
+            });
+            
+            // Search input
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value;
+                filterProducts();
+            });
+            
+            // Apply filter button
+            applyFilterBtn.addEventListener('click', filterProducts);
+            
+            // Modal close
+            modalClose.addEventListener('click', () => {
+                productModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal khi click bên ngoài
+            productModal.addEventListener('click', (e) => {
+                if (e.target === productModal) {
+                    productModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Mobile menu
+            mobileMenuBtn.addEventListener('click', () => {
+                mainMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu khi click vào link
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mainMenu.classList.remove('active');
+                });
+            });
+            
+            // Thêm phím ESC để đóng modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    productModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

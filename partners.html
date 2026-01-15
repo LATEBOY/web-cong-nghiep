@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đối Tác - Công Ty Giải Pháp Công Nghiệp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #28a745;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary);
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 86, 179, 0.9), rgba(0, 86, 179, 0.8)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 60px;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Partners Section */
+        .partners-section {
+            padding: 60px 0 100px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Partners Grid */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .partner-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .partner-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .partner-logo {
+            height: 180px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+        
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 120px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        
+        .partner-card:hover .partner-logo img {
+            transform: scale(1.1);
+        }
+        
+        .partner-info {
+            padding: 25px;
+            border-top: 1px solid #eee;
+        }
+        
+        .partner-name {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .partner-country {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .partner-products {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .partner-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .partner-since {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* International Partners */
+        .international-section {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+            margin: 80px 0;
+            border-radius: 10px;
+        }
+        
+        .country-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .country-btn {
+            padding: 8px 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .country-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .country-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Domestic Partners */
+        .domestic-section {
+            margin: 80px 0;
+        }
+        
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .industry-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .industry-item:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .industry-item:hover .industry-icon {
+            color: white;
+        }
+        
+        .industry-icon {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Certifications */
+        .certifications-section {
+            background-color: white;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin: 80px 0;
+        }
+        
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .cert-item {
+            text-align: center;
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .cert-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .cert-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Partnership Benefits */
+        .benefits-section {
+            margin: 80px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Become Partner */
+        .become-partner {
+            background: linear-gradient(135deg, var(--primary), #004494);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin: 80px 0;
+        }
+        
+        .become-partner h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .become-partner p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Statistics */
+        .stats-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            margin: 80px 0;
+            border-radius: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .partners-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .page-header p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .certifications-section {
+                padding: 40px 20px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-filter, .country-filter {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+            }
+            
+            .filter-btn, .country-btn {
+                white-space: nowrap;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadein {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalOpen 0.3s ease-out;
+        }
+        
+        @keyframes modalOpen {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+            z-index: 1;
+        }
+        
+        .modal-close:hover {
+            color: var(--dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-industry"></i>
+                <span>Công Ty Công Nghiệp</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="about.html">Giới Thiệu</a></li>
+                    <li><a href="services.html">Dịch Vụ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="partners.html" class="active">Đối Tác</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>ĐỐI TÁC & THƯƠNG HIỆU</h1>
+            <p>Hợp tác cùng các thương hiệu hàng đầu thế giới để mang đến giải pháp tốt nhất</p>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>ĐỐI TÁC QUỐC TẾ</h2>
+                <p>Nhà phân phối chính thức của các thương hiệu công nghiệp hàng đầu</p>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="all">Tất cả</button>
+                <button class="filter-btn" data-category="pump">Máy Bơm</button>
+                <button class="filter-btn" data-category="compressor">Máy Nén Khí</button>
+                <button class="filter-btn" data-category="valve">Van & Phụ Kiện</button>
+                <button class="filter-btn" data-category="system">Hệ Thống</button>
+                <button class="filter-btn" data-category="chemical">Hóa Chất</button>
+            </div>
+
+            <!-- Partners Grid -->
+            <div class="partners-grid" id="partnersGrid">
+                <!-- Partners will be loaded by JavaScript -->
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Đối tác quốc tế</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Quốc gia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Năm hợp tác</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Dự án triển khai</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Country Filter -->
+            <div class="international-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h3>ĐỐI TÁC THEO QUỐC GIA</h3>
+                        <p>Hợp tác đa quốc gia với các thương hiệu hàng đầu</p>
+                    </div>
+                    
+                    <div class="country-filter">
+                        <button class="country-btn active" data-country="all">Tất cả</button>
+                        <button class="country-btn" data-country="germany">Đức</button>
+                        <button class="country-btn" data-country="usa">Mỹ</button>
+                        <button class="country-btn" data-country="japan">Nhật Bản</button>
+                        <button class="country-btn" data-country="italy">Ý</button>
+                        <button class="country-btn" data-country="taiwan">Đài Loan</button>
+                        <button class="country-btn" data-country="korea">Hàn Quốc</button>
+                    </div>
+                    
+                    <div id="countryPartners" class="partners-grid">
+                        <!-- Country partners will be loaded by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Domestic Partners -->
+            <div class="domestic-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>ĐỐI TÁC TRONG NƯỚC</h2>
+                        <p>Hợp tác cùng hàng trăm doanh nghiệp Việt Nam thuộc đa ngành nghề</p>
+                    </div>
+                    
+                    <div class="industries-grid">
+                        <div class="industry-item animate-fadein">
+                            <div class="industry-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <h3>Khu Công Nghiệp</h3>
+                            <p>50+ đối tác</p>
+                        </div>
+                        
+                        <div class="industry-item animate-fadein">
+                            <div class="industry-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <h3>Xử Lý Nước Thải</h3>
+                            <p>30+ đối tác</p>
+                        </div>
+                        
+                        <div class="industry-item animate-fadein">
+                            <div class="industry-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h3>Hóa Chất & Dược</h3>
+                            <p>25+ đối tác</p>
+                        </div>
+                        
+                        <div class="industry-item animate-fadein">
+                            <div class="industry-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3>Thực Phẩm & Đồ Uống</h3>
+                            <p>40+ đối tác</p>
+                        </div>
+                        
+                        <div class="industry-item animate-fadein">
+                            <div class="industry-icon">
+                                <i class="fas fa-oil-can"></i>
+                            </div>
+                            <h3>Dầu Khí & Năng Lượng</h3>
+                            <p>20+ đối tác</p>
+                        </div>
+                        
+                        <div class="industry-item animate-fadein">
+                            <div class="industry-icon">
+                                <i class="fas fa-hard-hat"></i>
+                            </div>
+                            <h3>Xây Dựng & Khai Khoáng</h3>
+                            <p>35+ đối tác</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 50px;">
+                        <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: var(--shadow); display: inline-block;">
+                            <h3 style="color: var(--primary); margin-bottom: 15px;">Quy mô hợp tác trong nước</h3>
+                            <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+                                <div style="text-align: center;">
+                                    <div style="font-size: 32px; font-weight: bold; color: var(--primary);">200+</div>
+                                    <div style="color: var(--gray);">Doanh nghiệp</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 32px; font-weight: bold; color: var(--primary);">15+</div>
+                                    <div style="color: var(--gray);">Tỉnh thành</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 32px; font-weight: bold; color: var(--primary);">1000+</div>
+                                    <div style="color: var(--gray);">Dự án</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="certifications-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>CHỨNG NHẬN ĐỐI TÁC</h2>
+                        <p>Những chứng nhận và giải thưởng từ đối tác quốc tế</p>
+                    </div>
+                    
+                    <div class="certs-grid">
+                        <div class="cert-item animate-fadein">
+                            <div class="cert-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3>Đối Tác Vàng</h3>
+                            <p>Sydex - 5 năm liên tiếp</p>
+                            <p style="color: var(--gray); font-size: 14px; margin-top: 10px;">2018-2023</p>
+                        </div>
+                        
+                        <div class="cert-item animate-fadein">
+                            <div class="cert-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h3>Đại Lý Xuất Sắc</h3>
+                            <p>AirTech - Nhật Bản</p>
+                            <p style="color: var(--gray); font-size: 14px; margin-top: 10px;">2020-2023</p>
+                        </div>
+                        
+                        <div class="cert-item animate-fadein">
+                            <div class="cert-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Giải Thưởng Tăng Trưởng</h3>
+                            <p>FlowMax - Hoa Kỳ</p>
+                            <p style="color: var(--gray); font-size: 14px; margin-top: 10px;">2022</p>
+                        </div>
+                        
+                        <div class="cert-item animate-fadein">
+                            <div class="cert-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3>Chứng Nhận Chất Lượng</h3>
+                            <p>Mixtron - Ý</p>
+                            <p style="color: var(--gray); font-size: 14px; margin-top: 10px;">2021-2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partnership Benefits -->
+            <div class="benefits-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>LỢI ÍCH HỢP TÁC</h2>
+                        <p>Tại sao nên trở thành đối tác của chúng tôi?</p>
+                    </div>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-card animate-fadein">
+                            <div class="benefit-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <h3>Giao Hàng Nhanh</h3>
+                            <p>Hàng có sẵn tại kho, giao hàng toàn quốc trong 24-48 giờ</p>
+                        </div>
+                        
+                        <div class="benefit-card animate-fadein">
+                            <div class="benefit-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3>Hỗ Trợ Kỹ Thuật</h3>
+                            <p>Đội ngũ kỹ thuật hỗ trợ 24/7, có mặt trong 2 giờ khi cần</p>
+                        </div>
+                        
+                        <div class="benefit-card animate-fadein">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Giá Cạnh Tranh</h3>
+                            <p>Giá tốt nhất thị trường, chiết khấu cao cho đối tác</p>
+                        </div>
+                        
+                        <div class="benefit-card animate-fadein">
+                            <div class="benefit-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Đào Tạo Miễn Phí</h3>
+                            <p>Đào tạo sản phẩm và kỹ thuật cho đội ngũ đối tác</p>
+                        </div>
+                        
+                        <div class="benefit-card animate-fadein">
+                            <div class="benefit-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <h3>Chính Sách Linh Hoạt</h3>
+                            <p>Thanh toán linh hoạt, hỗ trợ vốn lưu động</p>
+                        </div>
+                        
+                        <div class="benefit-card animate-fadein">
+                            <div class="benefit-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Hợp Tác Lâu Dài</h3>
+                            <p>Cam kết hợp tác win-win, phát triển bền vững</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Become Partner -->
+            <div class="become-partner animate-fadein">
+                <div class="container">
+                    <h2>TRỞ THÀNH ĐỐI TÁC CỦA CHÚNG TÔI</h2>
+                    <p>Hãy cùng hợp tác để phát triển và mang đến những giải pháp công nghiệp tốt nhất cho thị trường Việt Nam</p>
+                    
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                        <a href="contact.html" class="btn" style="background-color: white; color: var(--primary);">
+                            <i class="fas fa-handshake"></i> Đăng ký đối tác
+                        </a>
+                        <a href="tel:0901234567" class="btn btn-outline" style="color: white; border-color: white;">
+                            <i class="fas fa-phone"></i> Gọi tư vấn: 0901 234 567
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Detail Modal -->
+    <div class="modal" id="partnerModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div id="modalContent">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-industry"></i> Công Ty Công Nghiệp
+                    </div>
+                    <p>Chuyên tư vấn giải pháp kỹ thuật về hệ thống máy bơm, hệ thống khí nén, máy khuấy chìm, phụ kiện công nghiệp.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="about.html">Giới Thiệu</a></li>
+                        <li><a href="services.html">Dịch Vụ</a></li>
+                        <li><a href="products.html">Sản Phẩm</a></li>
+                        <li><a href="partners.html">Đối Tác</a></li>
+                        <li><a href="contact.html">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Thông Tin Liên Hệ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Đường Công Nghiệp, Quận 1, TP.HCM</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:02812345678" style="color: white; text-decoration: none;">(028) 1234 5678</a></p>
+                    <p><i class="fas fa-mobile-alt"></i> <a href="tel:0901234567" style="color: white; text-decoration: none;">0901 234 567</a></p>
+                    <p><i class="fas fa-envelope"></i> partners@congtycongnghiep.com</p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 8:00 - 17:00</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Công Ty Công Nghiệp. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dữ liệu đối tác quốc tế
+        const partners = [
+            {
+                id: 1,
+                name: "Sydex",
+                country: "germany",
+                category: "pump",
+                logo: "SYDEX",
+                products: "Máy bơm trục vít, hệ thống bơm công nghiệp",
+                since: "2016",
+                description: "Sydex là thương hiệu hàng đầu về máy bơm trục vít công nghiệp của Đức, với hơn 50 năm kinh nghiệm trong ngành. Sản phẩm của Sydex được ứng dụng rộng rãi trong các ngành thực phẩm, hóa chất, dầu khí.",
+                certification: "Đối tác Vàng 5 năm liên tiếp",
+                website: "https://www.sydex.de",
+                featured: true
+            },
+            {
+                id: 2,
+                name: "FlowMax",
+                country: "usa",
+                category: "pump",
+                logo: "FLOWMAX",
+                products: "Bơm bùn, bơm hóa chất, hệ thống xử lý nước",
+                since: "2017",
+                description: "FlowMax là công ty Mỹ chuyên sản xuất máy bơm cho ngành khai khoáng và xử lý nước thải. Sản phẩm được thiết kế để làm việc trong điều kiện khắc nghiệt nhất.",
+                certification: "Đại lý xuất sắc 2022",
+                website: "https://www.flowmax.com",
+                featured: true
+            },
+            {
+                id: 3,
+                name: "AirTech",
+                country: "japan",
+                category: "compressor",
+                logo: "AIRTECH",
+                products: "Máy nén khí trục vít, hệ thống khí nén công nghiệp",
+                since: "2019",
+                description: "AirTech đến từ Nhật Bản với công nghệ máy nén khí tiết kiệm năng lượng hàng đầu. Sản phẩm đạt tiêu chuẩn ISO 9001 và được chứng nhận chất lượng quốc tế.",
+                certification: "Đối tác chính thức tại Việt Nam",
+                website: "https://www.airtech.co.jp",
+                featured: true
+            },
+            {
+                id: 4,
+                name: "Mixtron",
+                country: "italy",
+                category: "system",
+                logo: "MIXTRON",
+                products: "Hệ thống định lượng, pha trộn hóa chất tự động",
+                since: "2018",
+                description: "Mixtron là thương hiệu Ý chuyên về hệ thống định lượng và pha trộn chính xác cho ngành hóa chất, dược phẩm và thực phẩm.",
+                certification: "Chứng nhận chất lượng EU",
+                website: "https://www.mixtron.it",
+                featured: false
+            },
+            {
+                id: 5,
+                name: "AquaPro",
+                country: "taiwan",
+                category: "pump",
+                logo: "AQUAPRO",
+                products: "Bơm nước, bơm chìm, bơm tăng áp",
+                since: "2015",
+                description: "AquaPro từ Đài Loan chuyên sản xuất máy bơm nước công nghiệp và dân dụng với công nghệ tiên tiến và giá cả cạnh tranh.",
+                certification: "Đối tác chiến lược",
+                website: "https://www.aquapro.com.tw",
+                featured: false
+            },
+            {
+                id: 6,
+                name: "ValveTech",
+                country: "korea",
+                category: "valve",
+                logo: "VALVETECH",
+                products: "Van công nghiệp, phụ kiện đường ống",
+                since: "2020",
+                description: "ValveTech là công ty Hàn Quốc chuyên sản xuất van công nghiệp chất lượng cao cho hệ thống dầu khí, hóa chất và năng lượng.",
+                certification: "Đối tác mới",
+                website: "https://www.valvetech.co.kr",
+                featured: false
+            },
+            {
+                id: 7,
+                name: "ChemPro",
+                country: "germany",
+                category: "chemical",
+                logo: "CHEMPRO",
+                products: "Hóa chất công nghiệp, chất phụ gia",
+                since: "2021",
+                description: "ChemPro cung cấp hóa chất công nghiệp và giải pháp xử lý nước từ Đức với chất lượng hàng đầu châu Âu.",
+                certification: "Đối tác phân phối",
+                website: "https://www.chempro.de",
+                featured: false
+            },
+            {
+                id: 8,
+                name: "PowerFlow",
+                country: "usa",
+                category: "system",
+                logo: "POWERFLOW",
+                products: "Hệ thống điều khiển, SCADA, tự động hóa",
+                since: "2022",
+                description: "PowerFlow chuyên về giải pháp tự động hóa và điều khiển hệ thống công nghiệp với công nghệ tiên tiến từ Mỹ.",
+                certification: "Đối tác kỹ thuật",
+                website: "https://www.powerflow.com",
+                featured: false
+            }
+        ];
+
+        // Biến toàn cục
+        let currentCategory = 'all';
+        let currentCountry = 'all';
+        let filteredPartners = [...partners];
+
+        // DOM Elements
+        const partnersGrid = document.getElementById('partnersGrid');
+        const countryPartners = document.getElementById('countryPartners');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const countryBtns = document.querySelectorAll('.country-btn');
+        const partnerModal = document.getElementById('partnerModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalContent = document.getElementById('modalContent');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+        const animatedElements = document.querySelectorAll('.animate-fadein');
+
+        // Hàm hiển thị đối tác
+        function displayPartners() {
+            // Lọc đối tác theo category và country
+            filteredPartners = partners.filter(partner => {
+                // Lọc theo category
+                if (currentCategory !== 'all' && partner.category !== currentCategory) {
+                    return false;
+                }
+                
+                // Lọc theo country (cho grid chính)
+                if (currentCountry !== 'all' && partner.country !== currentCountry) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            // Xóa nội dung cũ
+            partnersGrid.innerHTML = '';
+            
+            // Hiển thị đối tác
+            filteredPartners.forEach(partner => {
+                const partnerCard = createPartnerCard(partner);
+                partnersGrid.appendChild(partnerCard);
+            });
+            
+            // Hiển thị đối tác theo quốc gia
+            displayCountryPartners();
+        }
+
+        // Hàm tạo card đối tác
+        function createPartnerCard(partner) {
+            const card = document.createElement('div');
+            card.className = 'partner-card animate-fadein';
+            
+            // Tạo badge nếu là đối tác nổi bật
+            const badge = partner.featured ? '<div class="partner-badge">Nổi bật</div>' : '';
+            
+            // Lấy tên quốc gia đầy đủ
+            const countryNames = {
+                'germany': 'Đức',
+                'usa': 'Mỹ',
+                'japan': 'Nhật Bản',
+                'italy': 'Ý',
+                'taiwan': 'Đài Loan',
+                'korea': 'Hàn Quốc'
+            };
+            
+            // Lấy tên danh mục đầy đủ
+            const categoryNames = {
+                'pump': 'Máy Bơm',
+                'compressor': 'Máy Nén Khí',
+                'valve': 'Van & Phụ Kiện',
+                'system': 'Hệ Thống',
+                'chemical': 'Hóa Chất'
+            };
+            
+            card.innerHTML = `
+                ${badge}
+                <div class="partner-logo">
+                    <div style="font-size: 32px; font-weight: bold; color: var(--primary);">${partner.logo}</div>
+                </div>
+                <div class="partner-info">
+                    <h3 class="partner-name">${partner.name}</h3>
+                    <div class="partner-country">
+                        <i class="fas fa-globe"></i>
+                        <span>${countryNames[partner.country] || partner.country}</span>
+                        <span style="margin-left: auto;">${categoryNames[partner.category] || partner.category}</span>
+                    </div>
+                    <p class="partner-products">${partner.products}</p>
+                    <div class="partner-details">
+                        <div class="partner-since">
+                            <i class="fas fa-calendar-alt"></i>
+                            Hợp tác từ ${partner.since}
+                        </div>
+                        <button class="btn btn-outline" onclick="viewPartnerDetail(${partner.id})">
+                            <i class="fas fa-info-circle"></i> Chi tiết
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Hàm hiển thị đối tác theo quốc gia
+        function displayCountryPartners() {
+            // Xóa nội dung cũ
+            countryPartners.innerHTML = '';
+            
+            // Lọc đối tác theo quốc gia đang chọn
+            const countryFiltered = partners.filter(partner => {
+                return currentCountry === 'all' || partner.country === currentCountry;
+            });
+            
+            // Giới hạn hiển thị 4 đối tác
+            const displayPartners = countryFiltered.slice(0, 4);
+            
+            // Hiển thị đối tác
+            displayPartners.forEach(partner => {
+                const partnerCard = createPartnerCard(partner);
+                countryPartners.appendChild(partnerCard);
+            });
+            
+            // Nếu không có đối tác
+            if (displayPartners.length === 0) {
+                countryPartners.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-globe" style="font-size: 48px; color: #ccc; margin-bottom: 20px;"></i>
+                        <h3>Không có đối tác</h3>
+                        <p>Không tìm thấy đối tác từ quốc gia này</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Hàm hiển thị chi tiết đối tác
+        function viewPartnerDetail(partnerId) {
+            const partner = partners.find(p => p.id === partnerId);
+            if (!partner) return;
+            
+            // Tên quốc gia đầy đủ
+            const countryNames = {
+                'germany': 'Đức',
+                'usa': 'Mỹ',
+                'japan': 'Nhật Bản',
+                'italy': 'Ý',
+                'taiwan': 'Đài Loan',
+                'korea': 'Hàn Quốc'
+            };
+            
+            // Tên danh mục đầy đủ
+            const categoryNames = {
+                'pump': 'Máy Bơm',
+                'compressor': 'Máy Nén Khí',
+                'valve': 'Van & Phụ Kiện',
+                'system': 'Hệ Thống',
+                'chemical': 'Hóa Chất'
+            };
+            
+            // Tạo HTML chi tiết
+            modalContent.innerHTML = `
+                <div style="padding: 40px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 30px;">
+                        <div>
+                            <div style="background-color: #f8f9fa; padding: 40px; border-radius: 10px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                                <div style="font-size: 48px; font-weight: bold; color: var(--primary); margin-bottom: 20px;">${partner.logo}</div>
+                                <h2 style="color: var(--dark); margin-bottom: 10px;">${partner.name}</h2>
+                                <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px;">
+                                    <span style="background-color: #e3f2fd; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 14px;">
+                                        ${countryNames[partner.country] || partner.country}
+                                    </span>
+                                    <span style="background-color: #e8f5e9; color: var(--secondary); padding: 5px 15px; border-radius: 20px; font-size: 14px;">
+                                        ${categoryNames[partner.category] || partner.category}
+                                    </span>
+                                </div>
+                                ${partner.featured ? 
+                                    '<div style="background-color: #fff3cd; color: #856404; padding: 10px; border-radius: 5px; margin-bottom: 20px;">⭐ Đối tác nổi bật</div>' 
+                                    : ''}
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 style="color: var(--primary); margin-bottom: 20px;">Thông tin hợp tác</h3>
+                            
+                            <div style="margin-bottom: 25px;">
+                                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee;">
+                                    <span style="color: #666;">Thời gian hợp tác:</span>
+                                    <span style="font-weight: 600;">Từ năm ${partner.since}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee;">
+                                    <span style="color: #666;">Chứng nhận:</span>
+                                    <span style="font-weight: 600;">${partner.certification}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee;">
+                                    <span style="color: #666;">Website:</span>
+                                    <a href="${partner.website}" target="_blank" style="color: var(--primary); font-weight: 600;">${partner.website}</a>
+                                </div>
+                            </div>
+                            
+                            <h4 style="color: var(--dark); margin-bottom: 15px;">Sản phẩm chính:</h4>
+                            <p style="color: #666; margin-bottom: 25px;">${partner.products}</p>
+                            
+                            <div style="display: flex; gap: 15px;">
+                                <a href="products.html" class="btn">
+                                    <i class="fas fa-box-open"></i> Xem sản phẩm
+                                </a>
+                                <a href="${partner.website}" target="_blank" class="btn btn-outline">
+                                    <i class="fas fa-external-link-alt"></i> Truy cập website
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: #f8f9fa; padding: 30px; border-radius: 10px;">
+                        <h3 style="color: var(--primary); margin-bottom: 20px;">Giới thiệu về ${partner.name}</h3>
+                        <p style="color: #666; line-height: 1.8;">${partner.description}</p>
+                        
+                        <div style="margin-top: 30px; padding: 20px; background-color: white; border-radius: 8px;">
+                            <h4 style="color: var(--dark); margin-bottom: 15px;">Lợi ích khi hợp tác với ${partner.name}:</h4>
+                            <ul style="color: #666; padding-left: 20px;">
+                                <li style="margin-bottom: 10px;">Sản phẩm chất lượng cao với công nghệ tiên tiến</li>
+                                <li style="margin-bottom: 10px;">Chế độ bảo hành và hỗ trợ kỹ thuật toàn cầu</li>
+                                <li style="margin-bottom: 10px;">Đào tạo sản phẩm và kỹ thuật định kỳ</li>
+                                <li style="margin-bottom: 10px;">Cung cấp phụ kiện và linh kiện thay thế chính hãng</li>
+                                <li>Hỗ trợ tiếp thị và phát triển thị trường</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Hiển thị modal
+            partnerModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hiển thị đối tác ban đầu
+            displayPartners();
+            
+            // Category filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.getAttribute('data-category');
+                    displayPartners();
+                });
+            });
+            
+            // Country filter buttons
+            countryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    countryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCountry = btn.getAttribute('data-country');
+                    displayPartners();
+                });
+            });
+            
+            // Modal close
+            modalClose.addEventListener('click', () => {
+                partnerModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            partnerModal.addEventListener('click', (e) => {
+                if (e.target === partnerModal) {
+                    partnerModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Mobile menu
+            mobileMenuBtn.addEventListener('click', () => {
+                mainMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on links
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mainMenu.classList.remove('active');
+                });
+            });
+            
+            // Animate elements on scroll
+            function animateOnScroll() {
+                animatedElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Set initial state for animated elements
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Initial animation check
+            animateOnScroll();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Add current year to copyright
+            const copyright = document.querySelector('.copyright p');
+            if (copyright) {
+                const currentYear = new Date().getFullYear();
+                copyright.innerHTML = copyright.innerHTML.replace('2023', currentYear);
+            }
+            
+            // Add keyboard support for modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    partnerModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
